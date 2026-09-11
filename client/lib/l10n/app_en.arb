@@ -113,13 +113,6 @@
       }
     }
   },
-  "@enterMessageExample": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "@enterQuestionWithNumber": {
     "placeholders": {
       "number": {}
@@ -342,13 +335,6 @@
       }
     }
   },
-  "@whatMessageToShowParticipants": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "about": "About",
   "aboutHint": "Add more detail as to the goals of this community",
   "aboutMe": "About me",
@@ -359,6 +345,8 @@
   "addACategory": "Add a category",
   "addAComment": "Add a comment",
   "addActionLink": "Add action link",
+  "addActionLinksAfter": "Add action links participants should visit after the event",
+  "addActionLinksBefore": "Add action links participants should visit before the event",
   "addAgendaItem": "Add agenda item",
   "addAPrerequisiteTemplate": "Add a prerequisite template",
   "addAQuestion": "Add a question",
@@ -571,7 +559,8 @@
   "enterHeadline": "Enter Headline",
   "enterImageTitle": "Enter Image title",
   "enterMessage": "Enter message",
-  "enterMessageExample": "Enter message (e.g. \"Take this survey {beforeAfter} the event\")",
+  "enterMessageExampleAfter": "Enter message (e.g. \"Take this survey after the event\")",
+  "enterMessageExampleBefore": "Enter message (e.g. \"Take this survey before the event\")",
   "enterQuestionWithNumber": "Enter Question {number}",
   "enterRoom": "Enter Room",
   "enterRoomNumber": "Ex: 2",
@@ -1136,7 +1125,8 @@
   "welcome": "Welcome to Frankly",
   "welcomeName": "Welcome, {name}",
   "welcomeToApp": "Welcome to {appName}",
-  "whatMessageToShowParticipants": "What message do you want to show participants {beforeAfter} the event?",
+  "whatMessageToShowParticipantsAfter": "What message do you want to show participants after the event?",
+  "whatMessageToShowParticipantsBefore": "What message do you want to show participants before the event?",
   "whenNewItemsAdded": "When new {name} are added, you'll see them here.",
   "whenYouUpgrade": "when you upgrade",
   "wordCloud": "Word Cloud",

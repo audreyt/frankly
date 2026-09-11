@@ -153,13 +153,6 @@
       }
     }
   },
-  "@enterMessageExample": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "@enterQuestionWithNumber": {
     "placeholders": {
       "number": {}
@@ -412,13 +405,6 @@
       }
     }
   },
-  "@whatMessageToShowParticipants": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "about": "關於",
   "aboutHint": "新增更多關於此社群目標的詳細資訊",
   "aboutMe": "關於我",
@@ -429,6 +415,8 @@
   "addACategory": "添加類別",
   "addAComment": "新增評論",
   "addActionLink": "新增行動連結",
+  "addActionLinksAfter": "新增參與者應在活動結束後造訪的行動連結",
+  "addActionLinksBefore": "新增參與者應在活動開始前造訪的行動連結",
   "addAgendaItem": "新增議程項目",
   "addAPrerequisiteTemplate": "添加先決條件模板",
   "addAQuestion": "添加問題",
@@ -641,7 +629,8 @@
   "enterHeadline": "輸入標題",
   "enterImageTitle": "輸入圖片標題",
   "enterMessage": "輸入訊息",
-  "enterMessageExample": "輸入訊息（例如：「在活動{beforeAfter}進行此調查」）",
+  "enterMessageExampleAfter": "輸入訊息（例如：「在活動結束後進行此調查」）",
+  "enterMessageExampleBefore": "輸入訊息（例如：「在活動開始前進行此調查」）",
   "enterQuestionWithNumber": "輸入問題 {number}",
   "enterRoom": "進入房間",
   "enterRoomNumber": "輸入房間號碼",
@@ -1207,7 +1196,8 @@
   "welcome": "歡迎來到 Frankly",
   "welcomeName": "您好，{name}",
   "welcomeToApp": "歡迎來到 {appName}",
-  "whatMessageToShowParticipants": "您想在活動{beforeAfter}向參與者顯示什麼訊息？",
+  "whatMessageToShowParticipantsAfter": "您想在活動結束後向參與者顯示什麼訊息？",
+  "whatMessageToShowParticipantsBefore": "您想在活動開始前向參與者顯示什麼訊息？",
   "whenNewItemsAdded": "當新增{name}時，您將在此處看到它們。",
   "whenYouUpgrade": "當您升級時",
   "wordCloud": "詞雲",

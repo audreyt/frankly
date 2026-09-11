@@ -234,7 +234,9 @@ class _ReassignBreakoutRoomDialogState
               vertical: 6,
             ),
             child: Text(
-              context.l10n.reassignUser(publicUserInfo?.displayName ?? 'User'),
+              context.l10n.reassignUser(
+                publicUserInfo?.displayName ?? context.l10n.unknownUser,
+              ),
               style: TextStyle(
                 color: context.theme.colorScheme.onPrimary,
                 fontSize: 16,

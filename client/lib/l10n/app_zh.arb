@@ -153,13 +153,6 @@
       }
     }
   },
-  "@enterMessageExample": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "@enterQuestionWithNumber": {
     "placeholders": {
       "number": {}
@@ -416,13 +409,6 @@
       }
     }
   },
-  "@whatMessageToShowParticipants": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "about": "关于",
   "aboutHint": "添加更多关于此社区目标的详细信息",
   "aboutMe": "关于我",
@@ -433,6 +419,8 @@
   "addACategory": "添加一个类别",
   "addAComment": "添加评论",
   "addActionLink": "添加行动链接",
+  "addActionLinksAfter": "添加参与者应在活动结束后访问的行动链接",
+  "addActionLinksBefore": "添加参与者应在活动开始前访问的行动链接",
   "addAgendaItem": "添加议程项",
   "addAPrerequisiteTemplate": "添加先决条件模板",
   "addAQuestion": "添加一个问题",
@@ -645,7 +633,8 @@
   "enterHeadline": "输入标题",
   "enterImageTitle": "输入图片标题",
   "enterMessage": "输入消息",
-  "enterMessageExample": "输入消息（例如：“在活动{beforeAfter}进行此调查”）",
+  "enterMessageExampleAfter": "输入消息（例如：“在活动结束后进行此调查”）",
+  "enterMessageExampleBefore": "输入消息（例如：“在活动开始前进行此调查”）",
   "enterQuestionWithNumber": "输入问题 {number}",
   "enterRoom": "进入房间",
   "enterRoomNumber": "例如：2",
@@ -1212,7 +1201,8 @@
   "welcome": "欢迎来到 Frankly",
   "welcomeName": "您好，{name}",
   "welcomeToApp": "欢迎来到 {appName}",
-  "whatMessageToShowParticipants": "您想在活动{beforeAfter}向参与者显示什么消息？",
+  "whatMessageToShowParticipantsAfter": "您想在活动结束后向参与者显示什么消息？",
+  "whatMessageToShowParticipantsBefore": "您想在活动开始前向参与者显示什么消息？",
   "whenNewItemsAdded": "当添加新的{name}时，您将在此处看到它们。",
   "whenYouUpgrade": "当您升级时",
   "wordCloud": "词云",

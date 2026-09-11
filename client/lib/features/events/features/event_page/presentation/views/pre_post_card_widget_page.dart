@@ -189,13 +189,19 @@ class _PrePostCardWidgetPageState extends State<PrePostCardWidgetPage>
   }
 
   Widget _buildEditablePrePostCard() {
-    final String beforeAfter;
+    final String headingText;
+    final String messageHintText;
+    final String actionLinksText;
     switch (widget.prePostCardType) {
       case PrePostCardType.preEvent:
-        beforeAfter = 'before';
+        headingText = context.l10n.whatMessageToShowParticipantsBefore;
+        messageHintText = context.l10n.enterMessageExampleBefore;
+        actionLinksText = context.l10n.addActionLinksBefore;
         break;
       case PrePostCardType.postEvent:
-        beforeAfter = 'after';
+        headingText = context.l10n.whatMessageToShowParticipantsAfter;
+        messageHintText = context.l10n.enterMessageExampleAfter;
+        actionLinksText = context.l10n.addActionLinksAfter;
         break;
     }
 
@@ -208,7 +214,7 @@ class _PrePostCardWidgetPageState extends State<PrePostCardWidgetPage>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              context.l10n.whatMessageToShowParticipants(beforeAfter),
+              headingText,
               style: context.theme.textTheme.titleMedium,
             ),
             SizedBox(height: 30),
@@ -224,8 +230,7 @@ class _PrePostCardWidgetPageState extends State<PrePostCardWidgetPage>
             ),
             SizedBox(height: 14),
             CustomTextField(
-              hintText:
-                  context.l10n.enterMessageExample(beforeAfter),
+              hintText: messageHintText,
               initialValue: _model.prePostCard.message,
               borderType: BorderType.outline,
               borderRadius: 10,
@@ -245,7 +250,7 @@ class _PrePostCardWidgetPageState extends State<PrePostCardWidgetPage>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HeightConstrainedText(
-                'Add action links participants should visit $beforeAfter the event',
+                actionLinksText,
                 style: context.theme.textTheme.titleMedium,
               ),
               SizedBox(height: 30),

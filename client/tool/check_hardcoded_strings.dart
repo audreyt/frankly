@@ -5,6 +5,7 @@ import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:crypto/crypto.dart';
 
@@ -52,6 +53,10 @@ const _namedTextParametersByWidget = <String, Set<String>>{
 final _ignoreCommentPattern = RegExp(
   r'//\s*ignore:\s*hardcoded_string(?:\s|$)',
 );
+
+/// Matches any Unicode letter, so CJK and kana labels such as `Text('设置')`
+/// are reported rather than silently skipped.
+final _letterPattern = RegExp(r'\p{L}', unicode: true);
 
 class _Finding {
   const _Finding({
@@ -157,8 +162,13 @@ class _StringVisitor extends RecursiveAstVisitor<void> {
   }
 
   void _record(Expression expression) {
-    final literal = _unwrapLiteral(expression);
-    if (literal == null || !_recorded.add(literal)) {
+    for (final literal in _literalsOf(expression)) {
+      _recordLiteral(literal);
+    }
+  }
+
+  void _recordLiteral(StringLiteral literal) {
+    if (!_recorded.add(literal)) {
       return;
     }
 
@@ -178,12 +188,36 @@ class _StringVisitor extends RecursiveAstVisitor<void> {
     );
   }
 
-  StringLiteral? _unwrapLiteral(Expression expression) {
-    var current = expression;
-    while (current is ParenthesizedExpression) {
-      current = current.expression;
+  /// Collects the string literals an argument can evaluate to.
+  ///
+  /// Conditional and null-coalescing expressions are common in UI code, so
+  /// `Text(enabled ? 'Stop Video' : 'Start Video')` has to report both
+  /// branches. The walk stays deliberately narrow: it never descends into
+  /// calls, so `Text(context.l10n.reassignUser('x'))` reports nothing.
+  List<StringLiteral> _literalsOf(Expression expression) {
+    switch (expression) {
+      case StringLiteral():
+        return <StringLiteral>[expression];
+      case ParenthesizedExpression(:final expression):
+        return _literalsOf(expression);
+      case ConditionalExpression(:final thenExpression, :final elseExpression):
+        return <StringLiteral>[
+          ..._literalsOf(thenExpression),
+          ..._literalsOf(elseExpression),
+        ];
+      case BinaryExpression(
+            :final operator,
+            :final leftOperand,
+            :final rightOperand
+          )
+          when operator.type == TokenType.QUESTION_QUESTION:
+        return <StringLiteral>[
+          ..._literalsOf(leftOperand),
+          ..._literalsOf(rightOperand),
+        ];
+      default:
+        return const <StringLiteral>[];
     }
-    return current is StringLiteral ? current : null;
   }
 
   String _literalValue(StringLiteral literal) {
@@ -346,26 +380,7 @@ String _decodeDartEscapes(String source) {
   return value == null ? null : (value: value, end: end - 1);
 }
 
-bool _containsLetter(String value) {
-  for (final rune in value.runes) {
-    if ((rune >= 0x41 && rune <= 0x5a) ||
-        (rune >= 0x61 && rune <= 0x7a) ||
-        (rune >= 0xc0 && rune <= 0x2ff) ||
-        (rune >= 0x370 && rune <= 0x52f) ||
-        (rune >= 0x590 && rune <= 0x8ff) ||
-        (rune >= 0x900 && rune <= 0x1fff) ||
-        (rune >= 0x2c00 && rune <= 0x2dff) ||
-        (rune >= 0xa640 && rune <= 0xa69f) ||
-        (rune >= 0xa720 && rune <= 0xa7ff) ||
-        (rune >= 0xab00 && rune <= 0xabff) ||
-        (rune >= 0xac00 && rune <= 0xd7af) ||
-        (rune >= 0xf900 && rune <= 0xfaff) ||
-        (rune >= 0x10000 && rune <= 0x1efff)) {
-      return true;
-    }
-  }
-  return false;
-}
+bool _containsLetter(String value) => _letterPattern.hasMatch(value);
 
 bool _isSkippable(File file) {
   final normalized = file.path.replaceAll('\\', '/');

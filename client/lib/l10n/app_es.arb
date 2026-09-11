@@ -152,13 +152,6 @@
       }
     }
   },
-  "@enterMessageExample": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "@enterQuestionWithNumber": {
     "placeholders": {
       "number": {}
@@ -410,13 +403,6 @@
       }
     }
   },
-  "@whatMessageToShowParticipants": {
-    "placeholders": {
-      "beforeAfter": {
-        "type": "String"
-      }
-    }
-  },
   "about": "Acerca de",
   "aboutHint": "Añade más detalles sobre los objetivos de esta comunidad",
   "aboutMe": "Sobre mí",
@@ -427,6 +413,8 @@
   "addACategory": "Agregar una categoría",
   "addAComment": "Añadir un comentario",
   "addActionLink": "Añadir enlace de acción",
+  "addActionLinksAfter": "Añade enlaces de acción que los participantes deban visitar después del evento",
+  "addActionLinksBefore": "Añade enlaces de acción que los participantes deban visitar antes del evento",
   "addAgendaItem": "Añadir elemento de agenda",
   "addAPrerequisiteTemplate": "Agregar una plantilla de requisito previo",
   "addAQuestion": "Agregar una pregunta",
@@ -639,7 +627,8 @@
   "enterHeadline": "Introducir título",
   "enterImageTitle": "Introducir título de la imagen",
   "enterMessage": "Ingrese un mensaje",
-  "enterMessageExample": "Ingrese un mensaje (p. ej., \"Realiza esta encuesta {beforeAfter} del evento\")",
+  "enterMessageExampleAfter": "Ingrese un mensaje (p. ej., \"Realiza esta encuesta después del evento\")",
+  "enterMessageExampleBefore": "Ingrese un mensaje (p. ej., \"Realiza esta encuesta antes del evento\")",
   "enterQuestionWithNumber": "Ingrese la pregunta {number}",
   "enterRoom": "Entrar a la sala",
   "enterRoomNumber": "Ej: 2",
@@ -1204,7 +1193,8 @@
   "welcome": "Bienvenido a Frankly",
   "welcomeName": "Bienvenido, {name}",
   "welcomeToApp": "Bienvenido a {appName}",
-  "whatMessageToShowParticipants": "¿Qué mensaje quieres mostrar a los participantes {beforeAfter} del evento?",
+  "whatMessageToShowParticipantsAfter": "¿Qué mensaje quieres mostrar a los participantes después del evento?",
+  "whatMessageToShowParticipantsBefore": "¿Qué mensaje quieres mostrar a los participantes antes del evento?",
   "whenNewItemsAdded": "Cuando se agreguen nuevos {name}, los verás aquí.",
   "whenYouUpgrade": "cuando actualice",
   "wordCloud": "Nube de palabras",
