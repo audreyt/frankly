@@ -70,10 +70,13 @@ class _ParticipantsListState extends State<ParticipantsList> {
   List<Widget> _buildUserIcons() {
     final isCreator = widget.event.creatorId == currentUserId;
 
-    // Show creator and current user first.
+    // Show creator and current user first, but only if they are in the
+    // provided participantIds list. When the meeting is live, participantIds
+    // is pre-filtered to only present users, so don't bypass the isPresent filter.
+    final eligibleIds = widget.participantIds.toSet();
     final prefixParticipants = [
       if (isParticipant && !isCreator) currentUserId,
-      widget.event.creatorId,
+      if (eligibleIds.contains(widget.event.creatorId)) widget.event.creatorId,
     ];
 
     final List<Widget> chipWidgets;
@@ -170,17 +173,28 @@ class _ParticipantsListState extends State<ParticipantsList> {
     }
   }
 
-  Widget _buildSingleParticipantName() => UserInfoBuilder(
-        userId: widget.participantIds.first,
-        builder: (context, loading, user) {
-          final name = user.data?.displayName;
-          bool showName = !loading && name != null;
-
-          return HeightConstrainedText(
-            showName ? name : '1 person',
-            style: context.theme.textTheme.bodyMedium!
-                .copyWith(color: context.theme.colorScheme.onSurface),
-          );
-        },
+  Widget _buildSingleParticipantName() {
+    final participantIds = widget.participantIds;
+    if (participantIds.isEmpty) {
+      return HeightConstrainedText(
+        '1 person',
+        style: context.theme.textTheme.bodyMedium!
+            .copyWith(color: context.theme.colorScheme.onSurface),
       );
+    }
+
+    return UserInfoBuilder(
+      userId: participantIds.first,
+      builder: (context, loading, user) {
+        final name = user.data?.displayName;
+        final showName = !loading && name != null;
+
+        return HeightConstrainedText(
+          showName ? name : '1 person',
+          style: context.theme.textTheme.bodyMedium!
+              .copyWith(color: context.theme.colorScheme.onSurface),
+        );
+      },
+    );
+  }
 }
