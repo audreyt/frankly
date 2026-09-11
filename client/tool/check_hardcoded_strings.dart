@@ -48,6 +48,7 @@ const _namedTextParametersByWidget = <String, Set<String>>{
     'title',
   },
   'ThickOutlineButton': {'text'},
+  '_IconButton': {'text'},
 };
 
 final _ignoreCommentPattern = RegExp(

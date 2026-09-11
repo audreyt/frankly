@@ -141,7 +141,11 @@ lib/features/events/features/live_meeting/features/meeting_guide/presentation/wi
 lib/features/events/features/live_meeting/features/meeting_guide/presentation/widgets/meeting_guide_card_tutorial.dart	e3e701351a63	1	Agenda Item 1 of 10
 lib/features/events/features/live_meeting/features/video/presentation/views/fake_participants_dialog.dart	1509f561f241	1	Save
 lib/features/events/features/live_meeting/features/video/presentation/views/video_flutter_meeting.dart	5c799f5aa8a7	1	Need Help?
+lib/features/events/features/live_meeting/features/video/presentation/widgets/control_bar.dart	424e5d80d19c	1	Start Video
+lib/features/events/features/live_meeting/features/video/presentation/widgets/control_bar.dart	8dd6857baf02	1	Mute
+lib/features/events/features/live_meeting/features/video/presentation/widgets/control_bar.dart	b214dc929764	1	Stop Video
 lib/features/events/features/live_meeting/features/video/presentation/widgets/control_bar.dart	c224b2af45ba	1	Audio/Video Settings
+lib/features/events/features/live_meeting/features/video/presentation/widgets/control_bar.dart	ce4ee4efc5e3	1	Unmute
 lib/features/events/features/live_meeting/features/video/presentation/widgets/control_bar.dart	fc6e4a408d56	1	Leave
 lib/features/events/features/live_meeting/features/video/presentation/widgets/participant_widget.dart	41a634bed373	1	View Profile
 lib/features/events/features/live_meeting/features/video/presentation/widgets/participant_widget.dart	47d2a515ef2f	1	Loading...
